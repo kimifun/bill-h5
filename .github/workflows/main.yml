@@ -34,3 +34,4 @@ jobs:
         port: 22
         source: 'dist/'
         target: ${{ secrets.REMOTE_TARGET }}
+        command_timeout: 30
