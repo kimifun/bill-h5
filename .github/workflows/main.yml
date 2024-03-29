@@ -1,0 +1,29 @@
+name: CI
+on:
+  push:
+    branchs: [ 'main ]
+jobs:
+  build app:
+    runs-on: ubuntu-latest
+    setup:
+      - uses: action/checkout@v2
+      - name: install node.js
+        use: actions/setup-node@v4.0.2
+        with:
+         node-version: "20.X"
+      - name: install deps
+        run: pnpm install
+      - name: build app
+        run: pnpm build
+      - name: scp Files
+        uses: appleboy/scp-action@v0.0.1
+        with:
+          host: ${{ REMOTE_HOST }},
+          username: ${{ REMOTE_USERNAME }},
+          password: ${{ REMOTE_PASSWORD }},
+          port: 22
+          source: 'dist/'
+          target: ${{ REMOTE_TARGET }}
+        
+          
+        
