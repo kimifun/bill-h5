@@ -15,8 +15,11 @@ jobs:
       with:
         node-version: '20.X'
 
+    - name: enable corepack
+      run: corepack enable
+      
     - name: install deps
-      run: pnpm ci
+      run: pnpm i
       
     - name: build app
       run: pnpm build
