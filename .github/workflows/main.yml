@@ -24,9 +24,9 @@ jobs:
     - name: scp Files
       uses: appleboy/scp-action@v0.0.1
       with:
-        host: ${{ REMOTE_HOST }},
-        username: ${{ REMOTE_USERNAME }},
-        password: ${{ REMOTE_PASSWORD }},
+        host: ${{ secrets.REMOTE_HOST }},
+        username: ${{ secrets.REMOTE_USERNAME }},
+        password: ${{ secrets.REMOTE_PASSWORD }},
         port: 22
         source: 'dist/'
-        target: ${{ REMOTE_TARGET }}
+        target: ${{ secrets.REMOTE_TARGET }}
